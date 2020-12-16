@@ -1,8 +1,10 @@
 
-from app import app
+from flask import Blueprint
+
+authorize_page = Blueprint('authorize_page', __name__)
 
 
-@app.route("/authorize")
+@authorize_page.route('/authorize')
 def authorize():
     """Root route.
 
