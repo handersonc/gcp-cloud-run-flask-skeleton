@@ -1,6 +1,6 @@
 ## Development
 
-GCP Cloud Run Schekeleton -> One of the best services to host your workloads on Google, based on Dockers completely managed service, so only focus on your code :).
+GCP Cloud Run Schekeleton for Python with Flask -> Cloud Run One of the best services to host your workloads on Google, based on Dockers, completely managed service by Google, so only focus on your code :).
 
 #### Install virtualenv
 python3 -m pip install virtualenv
