@@ -6,4 +6,5 @@ webargs
 gunicorn
 requests
 google-cloud-datastore
+google-cloud-pubsub
 python-dotenv

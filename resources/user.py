@@ -19,6 +19,8 @@ from marshmallow import ValidationError
 from schemas.example import ExampleSchema
 from database.repository.user_repository import UserRepository
 
+from pubsub.pubsub_client import PubsubClient
+
 class UserResource(Resource):
     """POST to example resource"""
 
@@ -29,17 +31,22 @@ class UserResource(Resource):
         return {'message': 'user'}
 
     @use_args(ExampleSchema())
-    def post(self, payload):
+    def post(self, user):
         """create user"""
 
-        print(payload.email)
-        UserRepository().create(payload)
-        
+        print(user.email)
+        UserRepository().create(user)
 
+        PubsubClient().send_message('new-user', {
+            'email': user.email,
+            'data': 'Mailtrap service welcome you',
+            'subject': 'Welcome %s' % user.first_name,
+        })
+        
         return {'message': 'Data uploaded'}, 200
     
     def put(self, user_id):
-        """get user"""
+        """put user"""
         print('put')
 
         return {'message': 'put user'}
