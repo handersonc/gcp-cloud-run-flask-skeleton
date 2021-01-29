@@ -17,7 +17,7 @@ from webargs.flaskparser import use_args
 from marshmallow import ValidationError
 
 from schemas.example import ExampleSchema
-
+from database.repository.user_repository import UserRepository
 
 class UserResource(Resource):
     """POST to example resource"""
@@ -33,6 +33,8 @@ class UserResource(Resource):
         """create user"""
 
         print(payload.email)
+        UserRepository().create(payload)
+        
 
         return {'message': 'Data uploaded'}, 200
     
