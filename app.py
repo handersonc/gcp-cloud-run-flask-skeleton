@@ -12,7 +12,7 @@ from flask_restful import Api
 from handlers.errors import *
 from handlers.oauth2_client import authorize_page
 
-from resources.example import ExampleResource
+from resources.user import UserResource
 
 from settings import *
 
@@ -39,7 +39,10 @@ def _handle_api_error(ex):
 app.register_blueprint(authorize_page)
 
 # api resources
-api.add_resource(ExampleResource, '/api/v1/example')
+api.add_resource(
+    UserResource,
+    '/api/v1/user',
+    '/api/v1/user/<user_id>')
 
 if __name__ == "__main__":
     app.run(debug=DEBUG, host='0.0.0.0', port=int(environ.get('PORT', 8080)))
