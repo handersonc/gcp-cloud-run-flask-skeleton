@@ -5,4 +5,5 @@ marshmallow
 webargs
 gunicorn
 requests
+google-cloud-datastore
 python-dotenv

@@ -32,6 +32,8 @@ class UserResource(Resource):
     def post(self, payload):
         """create user"""
 
+        print(payload.email)
+
         return {'message': 'Data uploaded'}, 200
     
     def put(self, user_id):
