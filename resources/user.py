@@ -28,7 +28,8 @@ class UserResource(Resource):
         """get user"""
         print('get')
 
-        return {'message': 'one'}
+        user = UserRepository().get(user_id)
+        return {'data': ExampleSchema().dump(user)}
 
     @use_args(ExampleSchema())
     def post(self, user):

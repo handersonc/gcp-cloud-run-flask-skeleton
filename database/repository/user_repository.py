@@ -15,8 +15,9 @@ class UserRepository(DatastoreClient):
     entity.update(user.to_dict())
     self.client.put(entity)
   
-  def get(self, key):
-    return self.client.get(key)
+  def get(self, id):
+
+    return self.client.get(self.client.key(self.kind, id))
   
   def list(self):
     return self.client.query(kind=self.kind).fetch(limit=10)
