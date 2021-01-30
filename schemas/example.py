@@ -11,9 +11,9 @@ from database.models.user import User
 
 class ExampleSchema(Schema):
     """User Enrollments"""
-    email = fields.Email(required=True, data_key='email')
-    first_name = fields.Str(required=True, data_key='firstName')
-    last_name = fields.Str(required=True, data_key='lastName')
+    email = fields.Email(required=True)
+    first_name = fields.Str(required=True)
+    last_name = fields.Str(required=True)
 
     @post_load
     def make_user(self, data, **kwargs):

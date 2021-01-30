@@ -28,7 +28,7 @@ class UserResource(Resource):
         """get user"""
         print('get')
 
-        return {'message': 'user'}
+        return {'message': 'one'}
 
     @use_args(ExampleSchema())
     def post(self, user):
@@ -50,3 +50,10 @@ class UserResource(Resource):
         print('put')
 
         return {'message': 'put user'}
+
+class UserListResource(Resource):
+
+    def get(self):
+        result = UserRepository().list()
+        
+        return {'data': ExampleSchema(many=True).dump(result)}
