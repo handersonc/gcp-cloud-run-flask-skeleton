@@ -19,4 +19,4 @@ class UserRepository(DatastoreClient):
     return self.client.get(key)
   
   def list(self):
-    return self.client.query(kind=self.kind).fetch()
+    return self.client.query(kind=self.kind).fetch(limit=10)
